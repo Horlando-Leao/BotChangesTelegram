@@ -17,7 +17,7 @@ if __name__ == '__main__':
     send: dict = telegram_bot_message(message=message)
     print('send message:', send.get('ok'))
 
-    manager = StateManager(actual={}, new=last_update_trello)
+    manager = StateManager(new=last_update_trello)
     manager.set_next_state()
 
     # CHECK NEW UPDATE (LAST != NEW)
