@@ -48,7 +48,7 @@ def get_details_message(action: dict) -> str:
         f'Nome %3A {action.get("memberCreator").get("fullName")}',
         f'Quadro %3A {action.get("data").get("board").get("name")}',
         f'Cartão %3A {action.get("data").get("card").get("name")}',
-        f'Link %3A https://trello.com/b/SsLK6cGM/agile-audens'
+        f'Link %3A https://trello.com/b/SsLK6cGM/agile-scrum'
     ]
 
     message = "%0D%0A".join(message)
