@@ -1,8 +1,10 @@
+import os
+
 import requests
 from configparser import ConfigParser
 
 config = ConfigParser()
-config.read('config.ini')
+config.read(os.environ.get('FILE_CONFIG_INI'))
 
 
 def telegram_bot_message(message):

@@ -1,5 +1,5 @@
 import config
-
+config.set_file_config('config.ini')
 config.settings_env()
 
 from time import sleep
@@ -11,6 +11,7 @@ INTERVAL_CHECK_SECONDS = 1
 
 if __name__ == '__main__':
 
+    # SEND FIRST LAST UPDATE
     last_update_trello = ApiTrello().get_last_action()
     message = get_details_message(action=last_update_trello)
     send: dict = telegram_bot_message(message=message)
@@ -19,6 +20,7 @@ if __name__ == '__main__':
     manager = StateManager(actual={}, new=last_update_trello)
     manager.set_next_state()
 
+    # CHECK NEW UPDATE (LAST != NEW)
     while True:
         last_update_trello = ApiTrello().get_last_action()
         manager.new = last_update_trello

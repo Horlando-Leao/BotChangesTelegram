@@ -22,10 +22,14 @@ def write_config(filepath):
         config.write(configfile)
 
 
+def set_file_config(filename: str):
+    os.environ['FILE_CONFIG_INI'] = filename
+
+
 def settings_env():
 
     os.environ['PATH_ROOT_PROJECT'] = path.dirname(os.path.abspath(__file__))
-    path_config = path.join(os.environ.get('PATH_ROOT_PROJECT'), 'config.ini')
+    path_config = path.join(os.environ.get('PATH_ROOT_PROJECT'), os.environ.get('FILE_CONFIG_INI'))
 
     if not path.isfile(path_config):
         write_config(path_config)

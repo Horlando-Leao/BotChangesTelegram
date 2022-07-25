@@ -1,11 +1,12 @@
 import json
+import os
 from json import JSONDecodeError
 from typing import List
 from configparser import ConfigParser
 import requests
 
 config = ConfigParser()
-config.read('config.ini')
+config.read(os.environ.get('FILE_CONFIG_INI'))
 
 
 class ApiTrello:
