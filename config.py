@@ -13,9 +13,9 @@ def write_config(filepath):
     config.set('TELEGRAM', 'bot_chat_id', '')
 
     config.add_section('TRELLO')
-    config.set('TELEGRAM', 'url', '')
-    config.set('TELEGRAM', 'api_key', '')
-    config.set('TELEGRAM', 'api_token', '')
+    config.set('TRELLO', 'url', '')
+    config.set('TRELLO', 'api_key', '')
+    config.set('TRELLO', 'api_token', '')
 
     # Write the new structure to the new file
     with open(filepath, 'w') as configfile:

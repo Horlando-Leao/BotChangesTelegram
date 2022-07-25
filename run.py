@@ -1,10 +1,12 @@
+import config
+
+config.settings_env()
+
 from time import sleep
 from api_trello import ApiTrello, get_details_message
 from bot_telegram import telegram_bot_message
 from state_manager import StateManager
-import config
 
-config.settings_env()
 INTERVAL_CHECK_SECONDS = 1
 
 if __name__ == '__main__':
