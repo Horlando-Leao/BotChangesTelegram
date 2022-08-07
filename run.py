@@ -3,9 +3,9 @@ config.set_file_config('config.ini')
 config.settings_env()
 
 from time import sleep
-from api_trello import ApiTrello, get_details_message
-from bot_telegram import telegram_bot_message
-from state_manager import StateManager
+from src.api_trello import ApiTrello, get_details_message
+from src.bot_telegram import telegram_bot_message
+from src.state_manager import StateManager
 
 INTERVAL_CHECK_SECONDS = 1
 
