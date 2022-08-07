@@ -1,13 +1,17 @@
+import os
+from time import sleep
+from configparser import ConfigParser
 import config
+
 config.set_file_config('config.ini')
 config.settings_env()
 
-from time import sleep
 from src.api_trello import ApiTrello, get_details_message
 from src.bot_telegram import telegram_bot_message
 from src.state_manager import StateManager
 
-INTERVAL_CHECK_SECONDS = 1
+config_p = ConfigParser()
+config_p.read(os.environ.get('FILE_CONFIG_INI'))
 
 if __name__ == '__main__':
 
@@ -32,4 +36,4 @@ if __name__ == '__main__':
 
             manager.set_next_state()
 
-        sleep(INTERVAL_CHECK_SECONDS)
+        sleep(float(config_p['SYSTEM']['update_delay_sec']))
