@@ -1,5 +1,5 @@
 class StateManager:
-    def __init__(self, new):
+    def __init__(self, new: dict):
         self.actual = {}
         self.new = new
 
