@@ -6,8 +6,8 @@ import config
 config.set_file_config('config.ini')
 config.settings_env()
 
-from src.api_trello import ApiTrello, get_details_message
-from src.bot_telegram import telegram_bot_message
+from src.api.api_trello import ApiTrello
+from src.api.api_telegram import send_message_telegram_bot_api, format_message_for_trello_updates
 from src.state_manager import StateManager
 
 config_p = ConfigParser()
@@ -17,8 +17,8 @@ if __name__ == '__main__':
 
     # SEND FIRST LAST UPDATE
     last_update_trello = ApiTrello().get_last_action()
-    message = get_details_message(action=last_update_trello)
-    send: dict = telegram_bot_message(message=message)
+    message = format_message_for_trello_updates(action=last_update_trello)
+    send: dict = send_message_telegram_bot_api(message=message)
     print('send message:', send.get('ok'))
 
     manager = StateManager(new=last_update_trello)
@@ -30,8 +30,8 @@ if __name__ == '__main__':
         manager.new = last_update_trello
 
         if manager.is_diff():
-            message = get_details_message(action=last_update_trello)
-            send: dict = telegram_bot_message(message=message)
+            message = format_message_for_trello_updates(action=last_update_trello)
+            send: dict = send_message_telegram_bot_api(message=message)
             print('send message:', send.get('ok'))
 
             manager.set_next_state()

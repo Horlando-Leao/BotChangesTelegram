@@ -2,10 +2,7 @@ from unittest import TestCase
 
 
 class TestApiTrello(TestCase):
-    def test_get_last_action(self):
+    def test_get_last_action_is_return_status_ok(self):
         self.fail()
 
 
-class Test(TestCase):
-    def test_get_details_message(self):
-        self.fail()
